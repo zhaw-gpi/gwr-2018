@@ -44,15 +44,10 @@ Dieses Projekt simuliert das Gebäude- und Wohnungsregister der Schweiz, welches
 
 ## Nutzung der Applikation
 ### Tests mit soapUI
-1. Starten wie im vorherigen Kapitel beschrieben, damit der SOAP WebService läuft und über die URL http://localhost:8090/soap
-verfügbar ist
+1. Starten wie im vorherigen Kapitel beschrieben, damit der SOAP WebService läuft und über die URL http://localhost:8090/soap verfügbar ist
 2. Testen über folgende Varianten:
-    1. In soapUI händisch neue SOAP-Requests generieren mit der WSDL
-http://localhost:8090/soap/GebaeudeUndWohnungsRegisterService?wsdl. Welche Gebäude
-und Wohnungen dabei gefunden werden können, kann über die H2-Konsole geprüft werden 
-in den Tabellen GEBAEUDE und WOHNUNG. Anmeldedaten siehe bei Deployment und Start oben.
-    2. Die vorgefertigten Requests/TestSuite nutzen im soapUI-Projekt \src\test\resources\
-GebaeudeUndWohnungsRegisterServiceTests-soapui-project.xml
+    1. In soapUI händisch neue SOAP-Requests generieren mit der WSDL http://localhost:8090/soap/GebaeudeUndWohnungsRegisterService?wsdl. Welche Gebäude und Wohnungen dabei gefunden werden können, kann über die H2-Konsole geprüft werden in den Tabellen GEBAEUDE und WOHNUNG. Anmeldedaten siehe bei Deployment und Start oben.
+    2. Die vorgefertigten Requests/TestSuite nutzen im soapUI-Projekt \src\test\resources\GebaeudeUndWohnungsRegisterServiceTests-soapui-project.xml
 
 ### Tests aus der Umzugsplattform heraus
 Hierzu den Anweisungen folgen in https://github.com/zhaw-gpi/eumzug-plattform-2018
