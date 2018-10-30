@@ -1,12 +1,12 @@
 package ch.zhaw.gpi.gwr.controller;
 
 import ch.zhaw.gpi.gwr.entities.BuildingEntity;
-import ch.zhaw.gpi.gwr.repositories.GwrRepository;
 import ch.zhaw.iwi.gpi.gwr.AddresseExistenzType;
 import ch.zhaw.iwi.gpi.gwr.AdresseType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ch.zhaw.gpi.gwr.repositories.BuildingRepository;
 
 /**
  * Implementation für den GWR WebService für alle Requests im Zusammenhang mit Gebäuden
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class GwrBuildingController {
     
     @Autowired
-    private GwrRepository gwrRepository;
+    private BuildingRepository gwrRepository;
     
     /**
      * Implementation der Web Service-Operation Adresspruefung
@@ -35,7 +35,7 @@ public class GwrBuildingController {
      */
     public AddresseExistenzType checkAddressExistence(AdresseType address){
         // Datenbank-Suche nach der Kombination aus den drei Variablen-Werten durchführen
-        List<BuildingEntity> gefundeneGebaeude = gwrRepository.findByAddressAttributes(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
+        List<BuildingEntity> gefundeneGebaeude = gwrRepository.findByDplz4AndStrNameAndDeinr(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
         
         // Exists-Variable setzen in Abhängigkeit davon, ob ein Gebäude gefunden wurde
         Boolean exists;

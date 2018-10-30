@@ -2,7 +2,6 @@ package ch.zhaw.gpi.gwr.controller;
 
 import ch.zhaw.gpi.gwr.entities.BuildingEntity;
 import ch.zhaw.gpi.gwr.entities.DwellingEntity;
-import ch.zhaw.gpi.gwr.repositories.GwrRepository;
 import ch.zhaw.iwi.gpi.gwr.AdresseType;
 import ch.zhaw.iwi.gpi.gwr.FehlerType;
 import ch.zhaw.iwi.gpi.gwr.WohnungType;
@@ -10,6 +9,7 @@ import ch.zhaw.iwi.gpi.gwr.WohnungenAntwortType;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ch.zhaw.gpi.gwr.repositories.BuildingRepository;
 
 /**
  * Implementation für den GWR WebService für alle Requests im Zusammenhang mit Wohnungen
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class GwrDwellingController {
     
     @Autowired
-    private GwrRepository gwrRepository;
+    private BuildingRepository gwrRepository;
     
     /**
      * Implementation der Web Service-Operation WohnungenAnfrage
@@ -47,12 +47,12 @@ public class GwrDwellingController {
         String fehlerTypText = "";
 
         // Datenbank-Suche nach der Kombination aus den drei Variablen-Werten durchführen
-        List<BuildingEntity> gefundeneGebaeude = gwrRepository.findByAddressAttributes(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
+        List<BuildingEntity> gefundeneGebaeude = gwrRepository.findByDplz4AndStrNameAndDeinr(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
         
         // Wenn genau ein Gebäude zurück gegeben wurde ...
         if(gefundeneGebaeude.size() == 1){
-            // Falls ja, Datenbank-Suche in der Entität DwellingEntity nach dem Gebäude
-            gefundeneWohnungen = gwrRepository.findDwellingsByGebId(gefundeneGebaeude.get(0));
+            // Falls ja, Wohnungen zum Gebäude auslesen
+            gefundeneWohnungen = gefundeneGebaeude.get(0).getWohnungen();
             
             // Falls keine Wohnung in der Liste ist...
             if(gefundeneWohnungen.isEmpty()){
@@ -88,11 +88,11 @@ public class GwrDwellingController {
             for(DwellingEntity wohnungEntity : gefundeneWohnungen){
                 // Für jedes Wohnungs-Entity-Objekt ein WohnungType-Objekt erzeugen
                 WohnungType wohnungType = new WohnungType();
-                wohnungType.setWAZIM(wohnungEntity.getWAZIM());
-                wohnungType.setWBEZ(wohnungEntity.getWBEZ());
-                wohnungType.setWHGNR(wohnungEntity.getWHGNR());
-                wohnungType.setWMEHRG(wohnungEntity.getWMEHRG());
-                wohnungType.setWSTWK(wohnungEntity.getWSTWK());
+                wohnungType.setWAZIM(wohnungEntity.getwAZim());
+                wohnungType.setWBEZ(wohnungEntity.getwBez());
+                wohnungType.setWHGNR(wohnungEntity.getwhgNr());
+                wohnungType.setWMEHRG(wohnungEntity.getwMehrG());
+                wohnungType.setWSTWK(wohnungEntity.getwStwk());
                 
                 // Das WohnungType-Objekt der Wohnungen-Liste in wohnungAntwort hinzufügen
                 wohnungenAntwort.getWohnungen().add(wohnungType);
