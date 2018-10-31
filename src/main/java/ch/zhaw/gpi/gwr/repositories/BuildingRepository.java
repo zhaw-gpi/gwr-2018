@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 
  * @author scep
  */
-public interface BuildingRepository extends JpaRepository<BuildingEntity, Long>{
+public interface BuildingRepository extends JpaRepository<BuildingEntity, Integer>{
     
     /**
      * Methode, um alle Gebäude an einer Adresse zu erhalten
