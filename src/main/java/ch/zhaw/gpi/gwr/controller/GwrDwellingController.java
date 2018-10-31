@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ch.zhaw.gpi.gwr.repositories.BuildingRepository;
+import ch.zhaw.gpi.gwr.repositories.DwellingRepository;
 
 /**
  * Implementation für den GWR WebService für alle Requests im Zusammenhang mit Wohnungen
@@ -23,8 +24,12 @@ import ch.zhaw.gpi.gwr.repositories.BuildingRepository;
 @Component
 public class GwrDwellingController {
     
+    // Verdrahten der Repositories
     @Autowired
-    private BuildingRepository gwrRepository;
+    private BuildingRepository buildingRepository;
+    
+    @Autowired
+    private DwellingRepository dwellingRepository;
     
     /**
      * Implementation der Web Service-Operation WohnungenAnfrage
@@ -47,12 +52,12 @@ public class GwrDwellingController {
         String fehlerTypText = "";
 
         // Datenbank-Suche nach der Kombination aus den drei Variablen-Werten durchführen
-        List<BuildingEntity> gefundeneGebaeude = gwrRepository.findByDplz4AndStrNameAndDeinr(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
+        List<BuildingEntity> gefundeneGebaeude = buildingRepository.findByDplz4AndStrNameAndDeinr(address.getDPLZ4(), address.getSTRNAME(), address.getDEINR());
         
         // Wenn genau ein Gebäude zurück gegeben wurde ...
         if(gefundeneGebaeude.size() == 1){
             // Falls ja, Wohnungen zum Gebäude auslesen
-            gefundeneWohnungen = gefundeneGebaeude.get(0).getWohnungen();
+            gefundeneWohnungen = dwellingRepository.findByBuilding(gefundeneGebaeude.get(0));
             
             // Falls keine Wohnung in der Liste ist...
             if(gefundeneWohnungen.isEmpty()){

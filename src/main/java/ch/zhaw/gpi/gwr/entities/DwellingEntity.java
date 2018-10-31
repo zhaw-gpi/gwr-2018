@@ -2,7 +2,6 @@ package ch.zhaw.gpi.gwr.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +20,7 @@ public class DwellingEntity implements Serializable {
     // Wohnungsnummer
     @Id
     @NotNull
-    @Size(min = 12, max = 12)
+    @Size(min = 1, max = 12)
     private String whgNr;
 
     // Stockwerk
@@ -30,13 +29,13 @@ public class DwellingEntity implements Serializable {
     @Max(value = 3419)
     private int wStwk;
 
-    // Mehrgeschossigkeit (1 = nein, 2 = ja)
+    // Mehrgeschossigkeit (1 = ja, 2 = nein)
     @NotNull
     @Min(value = 1)
     @Max(value = 2)
     private int wMehrG;
 
-    // Bezeichnung
+    // Lage auf dem Stockwerk
     @NotNull
     @Size(min = 3, max = 40)
     private String wBez;
@@ -49,8 +48,8 @@ public class DwellingEntity implements Serializable {
 
     // Referenz auf das Gebäude
     @ManyToOne
-    @JoinColumn(name = "GEB_ID")
-    private BuildingEntity Gebaeude;
+    @JoinColumn(name = "EGID")
+    private BuildingEntity building;
 
     // GETTER und SETTER
     public String getwhgNr() {
@@ -94,11 +93,11 @@ public class DwellingEntity implements Serializable {
     }
 
     public BuildingEntity getGebaeude() {
-        return this.Gebaeude;
+        return this.building;
     }
 
-    public void setGebaeude(BuildingEntity Gebaeude) {
-        this.Gebaeude = Gebaeude;
+    public void setGebaeude(BuildingEntity building) {
+        this.building = building;
     }
 
 }
