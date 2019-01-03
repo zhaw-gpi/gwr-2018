@@ -66,56 +66,63 @@ public class DwellingEntity implements Serializable {
         return ewid;
     }
 
-    public void setEwid(int ewid) {
+    public DwellingEntity setEwid(int ewid) {
         this.ewid = ewid;
+        return this;
     }
     
     public String getwhgNr() {
         return this.whgNr;
     }
 
-    public void setwhgNr(String whgNr) {
+    public DwellingEntity setwhgNr(String whgNr) {
         this.whgNr = whgNr;
+        return this;
     }
 
     public int getwStwk() {
         return this.wStwk;
     }
 
-    public void setwStwk(int wStwk) {
+    public DwellingEntity setwStwk(int wStwk) {
         this.wStwk = wStwk;
+        return this;
     }
 
     public int getwMehrG() {
         return this.wMehrG;
     }
 
-    public void setwMehrG(int wMehrG) {
+    public DwellingEntity setwMehrG(int wMehrG) {
         this.wMehrG = wMehrG;
+        return this;
     }
 
     public String getwBez() {
         return this.wBez;
     }
 
-    public void setwBez(String wBez) {
+    public DwellingEntity setwBez(String wBez) {
         this.wBez = wBez;
+        return this;
     }
 
     public int getwAZim() {
         return this.wAZim;
     }
 
-    public void setwAZim(int wAZim) {
+    public DwellingEntity setwAZim(int wAZim) {
         this.wAZim = wAZim;
+        return this;
     }
     
     public BuildingEntity getBuilding() {
         return building;
     }
 
-    public void setBuilding(BuildingEntity building) {
+    public DwellingEntity setBuilding(BuildingEntity building) {
         this.building = building;
+        return this;
     }
 
 }
