@@ -3,6 +3,7 @@ package ch.zhaw.gpi.gwr.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
@@ -13,13 +14,27 @@ import javax.validation.constraints.Size;
 /**
  * Entitäts-Klasse für Wohnungen
  * 
- * @author scep
+ * Jasmin Schleeh <matthjas@students.zhaw.ch> und scep
  */
 @Entity(name="Wohnung")
+// Klasse für die zusammengesetzte ID
+@IdClass(DwellingEntityKey.class) 
 public class DwellingEntity implements Serializable {
-    // Wohnungsnummer
+    // ZUSAMMENGESETZTE ID START
+    // Manuell gesetzter Eidgenössischer Wohnungsidentifikator
     @Id
-    @NotNull
+    @Min(value = 1)
+    @Max(value = 900)
+    private int ewid;
+        
+    // Beziehung zu einem Gebäude
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "egid")
+    private BuildingEntity building;
+    // ZUSAMMENGESETZTE ID ENDE
+    
+    // Administrative Wohnungsnummer (z.B. der Gemeinde)
     @Size(min = 1, max = 12)
     private String whgNr;
 
@@ -46,12 +61,15 @@ public class DwellingEntity implements Serializable {
     @Max(value = 99)
     private int wAZim;
 
-    // Referenz auf das Gebäude
-    @ManyToOne
-    @JoinColumn(name = "EGID")
-    private BuildingEntity building;
-
     // GETTER und SETTER
+    public int getEwid() {
+        return ewid;
+    }
+
+    public void setEwid(int ewid) {
+        this.ewid = ewid;
+    }
+    
     public String getwhgNr() {
         return this.whgNr;
     }
@@ -91,12 +109,12 @@ public class DwellingEntity implements Serializable {
     public void setwAZim(int wAZim) {
         this.wAZim = wAZim;
     }
-
-    public BuildingEntity getGebaeude() {
-        return this.building;
+    
+    public BuildingEntity getBuilding() {
+        return building;
     }
 
-    public void setGebaeude(BuildingEntity building) {
+    public void setBuilding(BuildingEntity building) {
         this.building = building;
     }
 

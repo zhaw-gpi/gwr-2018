@@ -245,6 +245,7 @@
       </gwr:wohnungenInGebaeudeOperation>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:assertion type="Simple Contains" id="25f56a68-27aa-4ea1-94d1-99b386723f57" name="ContainsZweiWohnungen"><con:configuration><token><![CDATA[<ns2:Wohnung>
+               <ns2:EWID>1</ns2:EWID>
                <ns2:WHGNR>157123456789</ns2:WHGNR>
                <ns2:WSTWK>3100</ns2:WSTWK>
                <ns2:WMEHRG>2</ns2:WMEHRG>
@@ -252,6 +253,7 @@
                <ns2:WAZIM>4</ns2:WAZIM>
             </ns2:Wohnung>
             <ns2:Wohnung>
+               <ns2:EWID>2</ns2:EWID>
                <ns2:WHGNR>157123456780</ns2:WHGNR>
                <ns2:WSTWK>3103</ns2:WSTWK>
                <ns2:WMEHRG>1</ns2:WMEHRG>

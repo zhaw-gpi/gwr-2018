@@ -93,6 +93,7 @@ public class GwrDwellingController {
             for(DwellingEntity wohnungEntity : gefundeneWohnungen){
                 // Für jedes Wohnungs-Entity-Objekt ein WohnungType-Objekt erzeugen
                 WohnungType wohnungType = new WohnungType();
+                wohnungType.setEWID(wohnungEntity.getEwid());
                 wohnungType.setWAZIM(wohnungEntity.getwAZim());
                 wohnungType.setWBEZ(wohnungEntity.getwBez());
                 wohnungType.setWHGNR(wohnungEntity.getwhgNr());

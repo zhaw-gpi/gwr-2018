@@ -8,13 +8,13 @@ Dieses **Maven**-Projekt simuliert das Gebäude- und Wohnungsregister der Schwei
 
 Dieses Projekt wird in der [**eUmzugPrototyp-Lösung**](https://github.com/zhaw-gpi/eumzug-plattform-2018) verwendet, welche [eumzug.swiss](https://www.eumzug.swiss) nachbildet. Erarbeitet am [**Institut für Wirtschaftsinformatik** an der ZHAW School of Management and Law](http://www.zhaw.ch/iwi) im Rahmen des [Bachelor-Studiengangs Wirtschaftsinformatik](https://www.zhaw.ch/de/sml/studium/bachelor/wirtschaftsinformatik/) im [**Modul Geschäftsprozessintegration**](https://modulmanagement.sml.zhaw.ch/StaticModDescAblage/Modulbeschreibung_w.BA.XX.2GPI-WIN.XX.pdf).
 
+Die Simulation orientiert sich an der offiziellen **Dokumentation** des Bundesamtes für Statistik, abgelegt in src/docs/gwr_dokumentation.pdf.
 
 ## Komponenten / Funktionalität
 1. **Spring Boot**-Applikation mit Tomcat Server, usw.
 2. **Persistierung**skomponenten:
     1. **H2**-Datenbank
-    2. Gebäude- und Wohnungs-**Entitäten** gemäss folgendem Modell:
-![Klassendiagramm](src/docs/images/Class_Diagram.png "Klassendigramm")
+    2. Gebäude- und Wohnungs-**Entitäten** inklusive separate Entität für den zusammengesetzten Primärschlüssel der Wohnungs-Entität
     3. Gebäude- und Wohnungs-**JPA-Repositories**
     4. data.sql mit initialen Testdaten, die beim Starten der Applikation in die Datenbank eingefügt werden. Diese wurden über die Exceldatei src\test\resources\initialData.xlsx erstellt
 3. **SOAP WebService-Komponenten** (PS: mit Apache CXF gelöst statt nur spring-boot-starter-webservices, da letzteres mit der komplexen Struktur des XSD nicht umgehen kann)
@@ -54,3 +54,4 @@ Hierzu den Anweisungen folgen in https://github.com/zhaw-gpi/eumzug-plattform-20
 ## Mitwirkende
 1. Björn Scheppler: Hauptarbeit
 2. Peter Heinrich: Der stille Support im Hintergrund mit vielen Tipps sowie zuständig für den Haupt-Stack mit SpringBoot & Co.
+3. Studierende Michèle Aggeler, Laura Attinger, Daniel Fernandes Costa, Flora Ferat und Jasmin Schleeh: Zusammengesetzter Primärschlüssel für DwellingEntity

@@ -37,6 +37,14 @@
 	
 	<xs:complexType name="WohnungType">
 		<xs:sequence>
+                        <xs:element name="EWID">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="900"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
 			<xs:element name="WHGNR">
 				<xs:simpleType>
 					<xs:restriction base="xs:token">
