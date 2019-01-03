@@ -154,7 +154,6 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <gwr:adressPruefungOperation>\r
-         <!--Optional:-->\r
          <AdresspruefungAnfrage>\r
             <gwr:DEINR>13</gwr:DEINR>\r
             <gwr:DPLZ4>1595</gwr:DPLZ4>\r
