@@ -1,6 +1,5 @@
 package ch.zhaw.gpi.gwr.entities;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -19,7 +18,7 @@ import javax.validation.constraints.Size;
 @Entity(name="Wohnung")
 // Klasse für die zusammengesetzte ID
 @IdClass(DwellingEntityKey.class) 
-public class DwellingEntity implements Serializable {
+public class DwellingEntity {
     // ZUSAMMENGESETZTE ID START
     // Manuell gesetzter Eidgenössischer Wohnungsidentifikator
     @Id

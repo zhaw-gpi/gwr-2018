@@ -12,6 +12,11 @@ import java.util.Objects;
  */
 public class DwellingEntityKey implements Serializable {
     
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     // Eidgenössischer Wohnungsidentifikator
     private int ewid;
     

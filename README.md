@@ -2,7 +2,7 @@
 
 > Autoren der Dokumentation: Björn Scheppler
 
-> Dokumentation letztmals aktualisiert: 3.1.2019
+> Dokumentation letztmals aktualisiert: 4.10.2019
 
 Dieses **Maven**-Projekt simuliert das Gebäude- und Wohnungsregister der Schweiz, welches Operationen über **SOAP** bereitstellt.
 
@@ -29,8 +29,9 @@ Die Simulation orientiert sich an der offiziellen **Dokumentation** des Bundesam
 5. **Test-Fälle** als soapUI-Projekt (GebaeudeUndWohnungsRegisterServiceTests-soapui-project.xml)
 
 ## Deployment
-1. **Erstmalig** oder bei Problemen ein **Clean & Build (Netbeans)**, respektive `mvn clean install` (Cmd) durchführen
-2. Bei Änderungen am POM-File oder bei **(Neu)kompilierungsbedarf** genügt ein **Build (Netbeans)**, respektive `mvn install`
+1. **Erstmalig** oder bei Problemen ein `mvn clean install` durchführen
+2. Bei Änderungen am POM-File oder bei **(Neu)kompilierungsbedarf** genügt ein `mvn install`
+3. Dabei werden auch mit einem Maven-Plugin die Java-Klassen aus der XSD generiert.
 
 
 ## Nutzung
@@ -39,13 +40,13 @@ Die Simulation orientiert sich an der offiziellen **Dokumentation** des Bundesam
 2. Beim Starten werden die **Insert-Statements** in src\main\ressources\data.sql ausgeführt.
 3. Über http://localhost:8090/soap prüfen, ob die **WSDL** aufgerufen werden kann.
 4. In einem **SOAP-Client** (z.B. soapUI) mit dieser WSDL Requests bauen und aufrufen oder alternativ das bereits in src\test\resources\GebaeudeUndWohnungsRegisterServiceTests-soapui-project.xml vorhandene soapUI-Projekt nutzen.
-5. Das **Beenden** geschieht mit **Stop Build/Run (Netbeans)**, respektive **CTRL+C** (Cmd)
+5. Das **Beenden** geschieht mit **CTRL+C**
 
 ### SOAP-Client Umzugsplattform
 Hierzu den Anweisungen folgen in https://github.com/zhaw-gpi/eumzug-plattform-2018
 
 ### Fortgeschrittene Nutzung (Datenbank-Konsole)
-1. Um auf die Datenbankverwaltungs-Umgebung zuzugreifen, http://localhost:TOMCAT_PORT/console eingeben.
+1. Um auf die Datenbankverwaltungs-Umgebung zuzugreifen, http://localhost:8090/console eingeben.
 2. Anmeldung über:
     1. Benutzername sa
     2. Passwort: leer lassen

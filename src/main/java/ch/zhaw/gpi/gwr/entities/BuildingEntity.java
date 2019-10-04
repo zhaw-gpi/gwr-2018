@@ -1,6 +1,5 @@
 package ch.zhaw.gpi.gwr.entities;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
@@ -14,7 +13,7 @@ import javax.validation.constraints.Size;
  * @author scep
  */
 @Entity(name="Gebaeude")
-public class BuildingEntity implements Serializable {
+public class BuildingEntity {
     // Eidgenössischer Gebäudeidentifikator
     @Id
     private int egid;
